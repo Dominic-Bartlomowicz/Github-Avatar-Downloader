@@ -1,5 +1,12 @@
+var owner = process.argv[2];
+var repo = process.argv[3];
 var request = require('request');
 var secrets = require('./secrets.js');
+
+if(!owner || !repo){
+  console.log("Error! Please enter at least two values.");
+  return;
+}
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
@@ -27,7 +34,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
 }
 
 
-getRepoContributors("jquery", "jquery", function(err, result) {
+getRepoContributors(owner, repo, function(err, result) {
   for(var i = 0; i < result.length; i++){
   var path = './avatars/'+result[i].login+".jpg";
   downloadImageByURL(result[i]['avatar_url'], path);}
