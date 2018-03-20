@@ -18,7 +18,17 @@ function getRepoContributors(repoOwner, repoName, cb) {
 }
 
 
+ function downloadImageByURL(url, filePath){
+
+   var fs = require('fs');
+   request.get(url)
+   .pipe(fs.createWriteStream(filePath));
+
+}
+
+
 getRepoContributors("jquery", "jquery", function(err, result) {
   for(var i = 0; i < result.length; i++){
-  console.log(result[i]['avatar_url']);}
+  var path = './avatars/'+result[i].login+".jpg";
+  downloadImageByURL(result[i]['avatar_url'], path);}
 });
