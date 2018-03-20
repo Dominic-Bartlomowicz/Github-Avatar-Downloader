@@ -16,7 +16,7 @@ if(!owner || !repo){
 
 // Introductory program message
 
-console.log('Welcome to the GitHub Avatar Downloader! Downloading avatars...');
+console.log('Welcome to the GitHub Avatar Downloader!');
 
 
 // Fetches corresponding repository data
